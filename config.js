@@ -1,0 +1,2 @@
+// Projeto Supabase "doses-ps". A chave anon é pública por projeto; a proteção real está nas regras (RLS) do schema.sql.
+window.CFG={url:"https://nxaovxwqkdbqooyafkkf.supabase.co",key:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im54YW92eHdxa2RicW9veWFma2tmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI2Mjc2NDcsImV4cCI6MjEwODIwMzY0N30.CquKqjf6U98aCrVNtCTqFOpaair_MiGYCUzqLOexnFo",priceText:"",freeAccess:true};
