@@ -2,6 +2,18 @@
 
 Projeto Supabase já criado e configurado: **doses-ps** (São Paulo). Banco, regras de acesso e `config.js` já estão prontos.
 
+## Visualização local
+
+Requer Node.js 18 ou superior. Na raiz do projeto, execute:
+
+```bash
+npm run dev
+```
+
+Depois abra `http://localhost:4173` no navegador. Para visualizar o painel administrativo, acesse `http://localhost:4173/admin.html`.
+
+O servidor local (`server.js`) serve apenas arquivos estáticos, não substitui o Supabase e não deve ser usado como servidor de produção.
+
 ## Arquivos
 - `index.html`, `styles.css`, `app.js`: app público (somente leitura).
 - `data/drugs.json`: dados iniciais e cópia offline.
