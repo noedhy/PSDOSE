@@ -1,0 +1,13 @@
+{
+  "name": "doses-ps",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Doses PS — calculadora de apoio à decisão no pronto-socorro",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
