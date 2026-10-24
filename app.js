@@ -10,7 +10,7 @@ const $=s=>document.querySelector(s),app=$("#app");
 const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const f=x=>{x=+x;return String(x>=100?Math.round(x):x>=10?Math.round(x*10)/10:Math.round(x*100)/100).replace(".",",")};
 const T={home:"Início",a:"Doses adulto",p:"Doses pediátricas",proc:"Procedimentos",vaso:"Drogas vasoativas",trombo:"Trombólise",conta:"Minha conta",about:"Sobre"};
-function go(v){S.v=v;S.pv=null;S.pt=null;$("#drawer").classList.remove("open");$("#shade").classList.remove("open");render();scrollTo(0,0)}
+function go(v){S.v=v;S.pv=null;S.pt=null;$("#drawer").classList.remove("open");$("#shade").classList.remove("open");$("#mb").setAttribute("aria-expanded","false");render();scrollTo(0,0)}
 function calc(d,w){const r=[0,1].map(i=>{let m=d.k?d.k[i]*w:d.f[i];let cap=false;if(d.mx&&m>d.mx){m=d.mx;cap=true}return{m,ml:m/d.c,cap}});return r}
 function rng(a,b,u){u=esc(u);return a==b?f(a)+" "+u:f(a)+"–"+f(b)+" "+u}
 function card(d,w){const r=calc(d,w);const cap=r.some(x=>x.cap);
@@ -180,6 +180,6 @@ await plan();go(AU.prem?"home":"conta")}catch(e){er.textContent=m=="in"?"E-mail 
 function render(){$("#ttl").textContent=T[S.v];const fb=$("#fb"),fr=!!(window.CFG&&CFG.freeAccess);if(fb){fb.style.display=fr&&(GATE.has(S.v)||S.v=="home")?"block":"none";fb.textContent="Acesso gratuito por tempo limitado. No futuro, Procedimentos, Trombólise e Drogas vasoativas serão exclusivos para assinantes premium."}if(GATE.has(S.v)&&!AU.prem&&!fr){document.querySelectorAll("#drawer a").forEach(a=>a.classList.toggle("on",a.dataset.v==S.v));return paywall()}document.querySelectorAll("#drawer a").forEach(a=>a.classList.toggle("on",a.dataset.v==S.v));
 ({home,a:()=>list("a"),p:()=>list("p"),vaso,proc,trombo,conta,about})[S.v]()}
 document.querySelectorAll("#drawer a").forEach(a=>a.onclick=()=>go(a.dataset.v));
-$("#mb").onclick=()=>{$("#drawer").classList.add("open");$("#shade").classList.add("open")};
-$("#shade").onclick=()=>{$("#drawer").classList.remove("open");$("#shade").classList.remove("open")};
+$("#mb").onclick=()=>{const open=!$("#drawer").classList.contains("open");$("#drawer").classList.toggle("open",open);$("#shade").classList.toggle("open",open);$("#mb").setAttribute("aria-expanded",String(open))};
+$("#shade").onclick=()=>{$("#drawer").classList.remove("open");$("#shade").classList.remove("open");$("#mb").setAttribute("aria-expanded","false")};
 load();
